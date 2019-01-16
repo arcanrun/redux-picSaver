@@ -2,6 +2,7 @@ import React from "react";
 import { array } from "prop-types";
 
 import PhotosItem from "../PhotosItem/index";
+import ErrorBlock from "../ErrorBlock";
 import "./style.css";
 import Spinner from "../Spinner";
 
@@ -13,13 +14,16 @@ class Photos extends React.Component {
     photos: array.isRequired
   };
   render() {
-    const { photos } = this.props;
-    const { isFetching } = this.props;
+    const { photos, isFetching, error, error_message } = this.props;
 
     return (
       <div className="photos">
         {isFetching ? (
           <Spinner />
+        ) : error ? (
+          <ErrorBlock title={"Error while fetching"} />
+        ) : photos.length === 0 ? (
+          <ErrorBlock title={"Nothing found"} />
         ) : (
           photos.map(el => {
             return <PhotosItem key={el.id} urls={el.urls} />;

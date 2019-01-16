@@ -35,7 +35,6 @@ export const fetchPhotos = str => {
 
     fetch(unsplashApi(str))
       .then(res => {
-        console.log(res.json);
         return res.json();
       })
       .then(res => dispatch(recivePhotos(res.results)))
