@@ -3,7 +3,7 @@ import {
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_FAILURE
 } from "../constants/ActionType";
-import { API } from "../API/API";
+import unsplashApi from "../API/API";
 
 const requestPhotos = str => ({
   type: GET_PHOTOS_REQUEST,
@@ -33,9 +33,12 @@ export const fetchPhotos = str => {
   return dispatch => {
     dispatch(requestPhotos());
 
-    fetch(API)
-      .then(res => res.json)
-      .then(res => dispatch(recivePhotos(res)))
+    fetch(unsplashApi(str))
+      .then(res => {
+        console.log(res.json);
+        return res.json();
+      })
+      .then(res => dispatch(recivePhotos(res.results)))
       .catch(err => dispatch(errorPhotos(err)));
   };
 };

@@ -4,14 +4,19 @@
   height: 300px;
   margin: auto;
   margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #c0bdbd;
+  border-radius: 3px;
 }
 .photos__item_warapper {
-  height: 100%;
+  height: 90%;
   overflow: hidden;
 }
 .photos__item_img {
 }
-
+.photos__item_footer {
+  margin-top: 15px;
+}
 .photos__item_footer span:first-child {
   float: left;
 }
