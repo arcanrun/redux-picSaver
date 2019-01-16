@@ -26,7 +26,14 @@ class Photos extends React.Component {
           <ErrorBlock title={"Nothing found"} />
         ) : (
           photos.map(el => {
-            return <PhotosItem key={el.id} urls={el.urls} />;
+            return (
+              <PhotosItem
+                key={el.id}
+                urls={el.urls}
+                id={el.id}
+                description={el.description}
+              />
+            );
           })
         )}
       </div>

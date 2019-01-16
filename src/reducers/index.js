@@ -2,7 +2,7 @@ import {
   GET_PHOTOS_REQUEST,
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_FAILURE
-} from "../constants/ActionType";
+} from "../constants/requestsUnsplashActions";
 
 const initailState = {
   isFetching: false,
