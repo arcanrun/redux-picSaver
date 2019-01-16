@@ -3,6 +3,7 @@ import { array } from "prop-types";
 
 import PhotosItem from "../PhotosItem/index";
 import "./style.css";
+import Spinner from "../Spinner";
 
 class Photos extends React.Component {
   static defaultProps = {
@@ -13,12 +14,17 @@ class Photos extends React.Component {
   };
   render() {
     const { photos } = this.props;
+    const { isFetching } = this.props;
 
     return (
       <div className="photos">
-        {photos.map(el => {
-          return <PhotosItem key={el.id} urls={el.urls} />;
-        })}
+        {isFetching ? (
+          <Spinner />
+        ) : (
+          photos.map(el => {
+            return <PhotosItem key={el.id} urls={el.urls} />;
+          })
+        )}
       </div>
     );
   }

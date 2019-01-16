@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Header from "./Header";
-import Search from "./Search";
+import { SearchContainer } from "../containers/SearchContainer";
 import Photos from "./Photos";
 const photos = [
   {
@@ -49,7 +49,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Search />
+        <SearchContainer />
         <Photos photos={photos} />
       </div>
     );
