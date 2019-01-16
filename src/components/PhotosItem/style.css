@@ -1,0 +1,20 @@
+.photos__item {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.photos__item_warapper {
+  height: 100%;
+  overflow: hidden;
+}
+.photos__item_img {
+}
+
+.photos__item_footer span:first-child {
+  float: left;
+}
+.photos__item_footer span:nth-child(2) {
+  float: right;
+}
