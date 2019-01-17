@@ -1,7 +1,7 @@
 import React from "react";
 import { array } from "prop-types";
 
-import PhotosItem from "../PhotosItem/index";
+import { PhotosItemContainer } from "../../containers/PhotosItemContainer";
 import ErrorBlock from "../ErrorBlock";
 import "./style.css";
 import Spinner from "../Spinner";
@@ -27,7 +27,7 @@ class Photos extends React.Component {
         ) : (
           photos.map(el => {
             return (
-              <PhotosItem
+              <PhotosItemContainer
                 key={el.id}
                 urls={el.urls}
                 id={el.id}

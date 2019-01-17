@@ -1,4 +1,5 @@
 .photos__item {
+  transition: 0.2s;
   display: block;
   max-width: 300px;
   height: 300px;
@@ -7,6 +8,9 @@
   padding: 10px;
   border: 1px solid #c0bdbd;
   border-radius: 3px;
+}
+.photos__item:hover {
+  box-shadow: 0px 10px 10px 1px #c0bdbd;
 }
 .photos__item_warapper {
   height: 90%;
