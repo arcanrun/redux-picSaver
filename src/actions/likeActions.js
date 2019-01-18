@@ -7,14 +7,14 @@ import { addLikeAPI, ADD_LIKE } from "../API/API_LIKE";
 
 const requestAddLike = () => ({
   type: TOGGLE_LIKE_REQUEST,
-  isSending: true
+  isSendingLike: true
 });
 
 const likesToggleSuccess = id => ({
   type: TOGGLE_LIKE_SUCCESS,
-  isSending: false,
-  error: false,
-  error_message: "",
+  isSendingLike: false,
+  error_like_sending: false,
+  error_like_sending_message: "",
   payload: {
     id
   }
@@ -22,9 +22,9 @@ const likesToggleSuccess = id => ({
 
 const likeAddingFail = err => ({
   type: TOGGLE_LIKE_FAILURE,
-  isSending: false,
-  error: true,
-  error_message: new Error(err)
+  isSendingLike: true,
+  error_like_sending: false,
+  error_like_sending_message: new Error(err)
 });
 
 export const toggleLike = (id, urls) => {

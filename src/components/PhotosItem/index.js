@@ -3,8 +3,17 @@ import PropTypes from "prop-types";
 
 import "./style.css";
 import "../../static/icons.css";
+import Spinner2 from "../Spinner2";
 
-const PhotosItems = ({ urls, id, description, onClick, isLiked }) => (
+const PhotosItems = ({
+  urls,
+  id,
+  description,
+  onClick,
+  isLiked,
+  isSendingLike,
+  errorLikeSending
+}) => (
   <div className="photos__item">
     <div className="photos__item_warapper">
       <img
@@ -21,7 +30,9 @@ const PhotosItems = ({ urls, id, description, onClick, isLiked }) => (
           : description}
       </span>
       <span>
-        {isLiked ? (
+        {isSendingLike ? (
+          <Spinner2 />
+        ) : isLiked ? (
           <i
             className="heart_red"
             style={{ cursor: "pointer" }}
@@ -43,7 +54,10 @@ PhotosItems.propTypes = {
   urls: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   description: PropTypes.string,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  isSendingLike: PropTypes.bool.isRequired,
+  isLiked: PropTypes.bool.isRequired,
+  errorLikeSending: PropTypes.bool.isRequired
 };
 
 export default PhotosItems;
