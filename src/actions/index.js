@@ -12,13 +12,16 @@ const requestPhotos = str => ({
   }
 });
 
-const recivePhotos = photos => ({
-  type: GET_PHOTOS_SUCCESS,
-  payload: {
-    photos: photos,
-    isFetching: false
-  }
-});
+const recivePhotos = photos => {
+  console.log("action___", photos);
+  return {
+    type: GET_PHOTOS_SUCCESS,
+    payload: {
+      photos: photos,
+      isFetching: false
+    }
+  };
+};
 
 const errorPhotos = err => ({
   type: GET_PHOTOS_FAILURE,
@@ -29,15 +32,70 @@ const errorPhotos = err => ({
   }
 });
 
-export const fetchPhotos = str => {
-  return dispatch => {
+export function fetchPhotos(str) {
+  return async function(dispatch) {
     dispatch(requestPhotos());
-
-    fetch(unsplashApi(str))
+    let photosArrayUnsplash = await fetch(unsplashApi(str))
       .then(res => {
         return res.json();
       })
-      .then(res => dispatch(recivePhotos(res.results)))
+      .then(res => res.results)
       .catch(err => dispatch(errorPhotos(err)));
+
+    let ids = photosArrayUnsplash.map(el => el.id);
+
+    let withCheckdLikes = await queryIsLike_2(ids);
+    // console.log("-----?", withCheckdLikes);
+    photosArrayUnsplash.map(el => {
+      if (withCheckdLikes.includes(el.id)) {
+        el.isLiked = true;
+      } else {
+        el.isLiked = false;
+      }
+      return el;
+    });
+    console.log(photosArrayUnsplash);
+    // .then(res => {
+    //   let photosArray = res.results.map(el => {
+    //     console.log(checkIsLiked(el.id));
+    //     if (true) {
+    //       el.isLiked = true;
+    //     } else {
+    //       el.isLiked = false;
+    //     }
+    //     return el;
+    //   });
+
+    // })
+    dispatch(recivePhotos(photosArrayUnsplash));
   };
-};
+}
+
+async function checkIsLiked(id) {
+  let isLiked = await queryIsLike(id);
+  console.log("----->", isLiked);
+  return isLiked;
+}
+function queryIsLike(id) {
+  return fetch("http://127.0.0.1:8000/is-like/", {
+    method: "POST",
+    body: JSON.stringify(id)
+  })
+    .then(res => res.json())
+    .then(res => {
+      return res.IS_LIKED;
+    })
+    .catch(err => console.log(new Error(err)));
+}
+
+function queryIsLike_2(arr) {
+  return fetch("http://127.0.0.1:8000/is-like/", {
+    method: "POST",
+    body: JSON.stringify(arr)
+  })
+    .then(res => res.json())
+    .then(res => {
+      return res.IS_LIKED;
+    })
+    .catch(err => console.log(new Error(err)));
+}

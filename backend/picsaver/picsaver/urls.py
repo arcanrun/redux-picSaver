@@ -19,5 +19,6 @@ from picsaverapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add-like/', views.add_like)
+    path('add-like/', views.add_like),
+    path('is-like/', views.islike)
 ]

@@ -32,6 +32,7 @@ class Photos extends React.Component {
                 urls={el.urls}
                 id={el.id}
                 description={el.description}
+                isLiked={el.isLiked}
               />
             );
           })

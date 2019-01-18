@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./style.css";
 import "../../static/icons.css";
 
-const PhotosItems = ({ urls, id, description, onClick }) => (
+const PhotosItems = ({ urls, id, description, onClick, isLiked }) => (
   <div className="photos__item">
     <div className="photos__item_warapper">
       <img
@@ -21,11 +21,19 @@ const PhotosItems = ({ urls, id, description, onClick }) => (
           : description}
       </span>
       <span>
-        <i
-          className="heart_black"
-          style={{ cursor: "pointer" }}
-          onClick={() => onClick(id, urls)}
-        />
+        {isLiked ? (
+          <i
+            className="heart_red"
+            style={{ cursor: "pointer" }}
+            onClick={() => onClick(id, urls)}
+          />
+        ) : (
+          <i
+            className="heart_black"
+            style={{ cursor: "pointer" }}
+            onClick={() => onClick(id, urls)}
+          />
+        )}
       </span>
     </div>
   </div>
