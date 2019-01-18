@@ -1,21 +1,41 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import PhotosItem from "../components/PhotosItem/index";
-import { toggleLike } from "../actions/likeActions";
+import { addLikeAPI, ADD_LIKE } from "../API/API_LIKE";
 
-const mapStateToProps = state => {
-  return {
-    isSendingLike: state.photos.isSendingLike,
-    errorLikeSending: state.photos.error_like_sending
+export class PhotosItemContainer extends React.Component {
+  sendLike = (id, urls, toggleState) => {
+    toggleState();
+
+    let sendData = {
+      id_photo: id,
+      urls,
+      id_user: "empty"
+    };
+    console.log("TOGGLE_LIKE_REQUEST", sendData);
+    fetch(addLikeAPI(ADD_LIKE), {
+      method: "POST",
+      // credentials: "include",
+      // mode: "no-cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": "csrftoken"
+      },
+      body: JSON.stringify(sendData)
+    })
+      .then(res => {
+        toggleState();
+        console.log("TOGGLE_LIKE_SUCCESS", res);
+        return res.json();
+      })
+      .catch(err => {
+        toggleState();
+        console.log(new Error(err));
+      });
   };
-};
-
-const mapDispatchToProps = dispatch => ({
-  onClick: (id, urls) => dispatch(toggleLike(id, urls))
-});
-
-export const PhotosItemContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhotosItem);
+  render() {
+    const externalProps = this.props;
+    return <PhotosItem {...externalProps} send={this.sendLike} />;
+  }
+}

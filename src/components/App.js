@@ -4,7 +4,6 @@ import { HeaderContainer } from "../containers/HeaderContainer";
 import { SideMenuContainer } from "../containers/SideMenuContainer";
 import { SearchContainer } from "../containers/SearchContainer";
 import { PhotosContainer } from "../containers/PhotosContainer";
-import SideMenu from "../components/SideMenu";
 
 class App extends Component {
   render() {

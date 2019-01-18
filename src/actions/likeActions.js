@@ -50,9 +50,3 @@ export const toggleLike = (id, urls) => {
       .catch(err => dispatch(likeAddingFail(new Error(err))));
   };
 };
-
-// type: TOGGLE_LIKE,
-//     payload: {
-//       id,
-//       urls
-//     }

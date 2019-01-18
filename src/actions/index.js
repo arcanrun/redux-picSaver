@@ -45,6 +45,7 @@ export function fetchPhotos(str) {
     let ids = photosArrayUnsplash.map(el => el.id);
 
     let withCheckdLikes = await queryIsLike(ids);
+    if (withCheckdLikes === undefined) withCheckdLikes = [];
     photosArrayUnsplash.map(el => {
       if (withCheckdLikes.includes(el.id)) {
         el.isLiked = true;

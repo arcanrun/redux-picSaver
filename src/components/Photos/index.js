@@ -1,5 +1,5 @@
 import React from "react";
-import { array } from "prop-types";
+import { array, bool } from "prop-types";
 
 import { PhotosItemContainer } from "../../containers/PhotosItemContainer";
 import ErrorBlock from "../ErrorBlock";
@@ -11,10 +11,12 @@ class Photos extends React.Component {
     photos: []
   };
   static propTypes = {
-    photos: array.isRequired
+    photos: array.isRequired,
+    isFetching: bool.isRequired,
+    error: bool.isRequired
   };
   render() {
-    const { photos, isFetching, error, error_message } = this.props;
+    const { photos, isFetching, error } = this.props;
 
     return (
       <div className="photos">
