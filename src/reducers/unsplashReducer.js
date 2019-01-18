@@ -3,17 +3,9 @@ import {
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_FAILURE
 } from "../constants/requestsUnsplashActions";
-import {
-  TOGGLE_LIKE_SUCCESS,
-  TOGGLE_LIKE_REQUEST,
-  TOGGLE_LIKE_FAILURE
-} from "../constants/likeConstants";
 
 const initailState = {
   isFetching: false,
-  isSendingLike: false,
-  error_like_sending: false,
-  error_like_sending_message: "",
   photos: [],
   error: false,
   error_message: ""
@@ -37,20 +29,7 @@ export function photos(state = initailState, action) {
         error: action.payload.error,
         error_message: action.payload.error_message
       };
-    case TOGGLE_LIKE_REQUEST:
-      return { ...state, isSendingLike: action.isSendingLike };
-    case TOGGLE_LIKE_SUCCESS:
-      let newPhotos = state.photos.map(el => {
-        if (el.id === action.payload.id) {
-          el.isLiked = !el.isLiked;
-        }
-        return el;
-      });
-      return {
-        ...state,
-        photos: newPhotos,
-        isSendingLike: action.isSendingLike
-      };
+
     default:
       return state;
   }
