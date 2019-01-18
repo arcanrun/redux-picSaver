@@ -29,6 +29,15 @@ export function photos(state = initailState, action) {
         error: action.payload.error,
         error_message: action.payload.error_message
       };
+
+    case "TOGGLE_LIKE_SUCCESS":
+      let newPhotos = state.photos.map(el => {
+        if (el.id === action.payload.id) {
+          el.isLiked = !el.isLiked;
+        }
+        return el;
+      });
+      return { ...state, photos: newPhotos };
     default:
       return state;
   }
