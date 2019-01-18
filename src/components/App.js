@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 
-import Header from "./Header";
+import { HeaderContainer } from "../containers/HeaderContainer";
+import { SideMenuContainer } from "../containers/SideMenuContainer";
 import { SearchContainer } from "../containers/SearchContainer";
 import { PhotosContainer } from "../containers/PhotosContainer";
+import SideMenu from "../components/SideMenu";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <SideMenuContainer />
+        <HeaderContainer />
         <SearchContainer />
         <PhotosContainer />
       </div>

@@ -1,0 +1,24 @@
+.sidemenu {
+  position: fixed;
+  left: 0;
+  height: 100%;
+  top: 0;
+  width: 50%;
+  background: white;
+  box-shadow: 0px 0px 5px 5px rgba(26, 25, 25, 0.151);
+  z-index: 1000;
+  transition: 0.3s;
+}
+.sidemenu_display_hidden {
+  left: -100%;
+}
+.sidemenu__items {
+  list-style-type: none;
+  position: absolute;
+  top: 10%;
+}
+.sidemenu__items li {
+  margin: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
