@@ -4,12 +4,12 @@ import PhotosItem from "../components/PhotosItem/index";
 import { addLikeAPI, ADD_LIKE } from "../API/API_LIKE";
 
 export class PhotosItemContainer extends React.Component {
-  sendLike = (id, urls, toggleState) => {
+  sendLike = (id, urls, description, toggleState) => {
     toggleState();
-
     let sendData = {
       id_photo: id,
       urls,
+      description,
       id_user: "empty"
     };
     console.log("TOGGLE_LIKE_REQUEST", sendData);

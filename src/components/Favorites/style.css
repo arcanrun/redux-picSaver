@@ -1,0 +1,28 @@
+.favorite__header {
+  text-align: center;
+}
+.favorites__body {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+}
+.favorites__body .photos__item {
+  display: inline-block;
+  margin-bottom: 0;
+  margin: 5px;
+  max-width: 200px;
+  max-height: 200px;
+}
+.favorites__body .photos__item_warapper {
+  height: 85%;
+}
+.favorites__body .photos__item_footer .heart_red {
+  width: 15px;
+  height: 15px;
+  background-size: 15px;
+}
+.favorites__body .photos__item_footer .heart_black {
+  width: 15px;
+  height: 15px;
+  background-size: 15px;
+}

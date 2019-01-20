@@ -11,6 +11,7 @@ def add_like(request):
         req = json.loads(str(request.body, encoding='utf-8'))
         id_photo = req['id_photo']
         urls = req['urls']
+        description = req['description']
         id_user = 'empty'
         # --------
         all_data = Like.objects.all()
@@ -21,7 +22,7 @@ def add_like(request):
 
         # try:
         like = Like(id_photos=str(id_photo), urls=str(
-            urls), id_user=str(id_user))
+            urls), description=str(description), id_user=str(id_user))
         like.save()
         return JsonResponse({'LIKE_ID_PHOTO': id_photo, 'STATUS': 'added'})
         # except:
@@ -30,7 +31,21 @@ def add_like(request):
 
 
 def get_likes(request):
-    pass
+    response = {'RESPONSE': 'ALL_LIKE', 'USER': 'EMPTY'}
+
+    all_data = Like.objects.all()
+    arr_fields = []
+    for field in all_data:
+        item = {}
+        item['ID'] = field.id
+        item['id_photo'] = field.id_photos
+        item['description'] = field.description
+        item['urls'] = json.loads(field.urls.replace("'", '"'))
+
+        arr_fields.append(item)
+    response['data'] = arr_fields
+    print(response)
+    return JsonResponse(response)
 
 
 def islike(request):

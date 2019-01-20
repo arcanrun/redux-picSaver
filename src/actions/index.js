@@ -8,7 +8,8 @@ import unsplashApi from "../API/API";
 const requestPhotos = str => ({
   type: GET_PHOTOS_REQUEST,
   payload: {
-    isFetching: true
+    isFetching: true,
+    searchFor: str
   }
 });
 
@@ -34,7 +35,7 @@ const errorPhotos = err => ({
 
 export function fetchPhotos(str) {
   return async function(dispatch) {
-    dispatch(requestPhotos());
+    dispatch(requestPhotos(str));
     let photosArrayUnsplash = await fetch(unsplashApi(str))
       .then(res => {
         return res.json();

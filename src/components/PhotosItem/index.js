@@ -11,8 +11,8 @@ export default class PhotosItem extends React.Component {
     this.state = { isLiked: this.props.isLiked, isSendingLike: false };
   }
   toggleAndHandleLike = () => {
-    const { id, urls } = this.props;
-    this.props.send(id, urls, this.switchSendingLike);
+    const { id, urls, description } = this.props;
+    this.props.send(id, urls, description, this.switchSendingLike);
     this.setState({ isLiked: !this.state.isLiked });
   };
 

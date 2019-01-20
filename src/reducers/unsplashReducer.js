@@ -8,13 +8,18 @@ const initailState = {
   isFetching: false,
   photos: [],
   error: false,
-  error_message: ""
+  error_message: "",
+  searchFor: ""
 };
 
 export function photos(state = initailState, action) {
   switch (action.type) {
     case GET_PHOTOS_REQUEST:
-      return { ...state, isFetching: action.payload.isFetching };
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        searchFor: action.payload.searchFor
+      };
 
     case GET_PHOTOS_SUCCESS:
       return {
