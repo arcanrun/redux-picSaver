@@ -1,6 +1,9 @@
 import React from "react";
 import "./style.css";
 class Search extends React.Component {
+  // componentDidMount() {
+  //   this.props.onChange("");
+  // }
   handleChaneInput = e => {
     this.props.onChange(e.target.value);
   };

@@ -5,7 +5,7 @@ import {
 } from "../constants/requestsUnsplashActions";
 import unsplashApi from "../API/API";
 
-const requestPhotos = str => ({
+export const requestPhotos = str => ({
   type: GET_PHOTOS_REQUEST,
   payload: {
     isFetching: true,
@@ -14,11 +14,10 @@ const requestPhotos = str => ({
 });
 
 const recivePhotos = photos => {
-  console.log("action___", photos);
   return {
     type: GET_PHOTOS_SUCCESS,
     payload: {
-      photos: photos,
+      photos: photos.length,
       isFetching: false
     }
   };
