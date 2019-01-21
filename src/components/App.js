@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { HeaderContainer } from "../containers/HeaderContainer";
 import { SideMenuContainer } from "../containers/SideMenuContainer";
 import Main from "./Main";
-import Favorites from "../components/Favorites";
+import FavoritesContainer from "../containers/FavoritesContainer";
 import NoMatch from "../components/NoMatch";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
         <HeaderContainer />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/favorites" component={Favorites} />
+          <Route path="/favorites" component={FavoritesContainer} />
           <Route component={NoMatch} />
         </Switch>
       </div>
