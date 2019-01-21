@@ -8,10 +8,19 @@ import Spinner2 from "../Spinner2";
 export default class PhotosItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLiked: this.props.isLiked, isSendingLike: false };
+    console.log("--->", this.props);
+    this.state = {
+      isLiked: this.props.isLiked,
+      isSendingLike: false,
+      toggleVisibility: this.props.toggleVisibility,
+      isVisible: true
+    };
   }
   toggleAndHandleLike = () => {
     const { id, urls, description } = this.props;
+    if (this.state.toggleVisibility) {
+      this.setState({ isVisible: !this.state.isVisible });
+    }
     this.props.send(id, urls, description, this.switchSendingLike);
     this.setState({ isLiked: !this.state.isLiked });
   };
@@ -22,6 +31,9 @@ export default class PhotosItem extends React.Component {
   render() {
     const { urls, id, description } = this.props;
     const { isLiked, isSendingLike } = this.state;
+    if (!this.state.isVisible) {
+      return null;
+    }
     return (
       <div className="photos__item">
         <div className="photos__item_warapper">
@@ -65,7 +77,8 @@ PhotosItem.propTypes = {
   id: PropTypes.string.isRequired,
   description: PropTypes.string,
   isLiked: PropTypes.bool.isRequired,
-  send: PropTypes.func.isRequired
+  send: PropTypes.func.isRequired,
+  toggleVisibility: PropTypes.bool.isRequired
 };
 
 // export default PhotosItems;

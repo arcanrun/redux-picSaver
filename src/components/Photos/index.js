@@ -35,6 +35,7 @@ class Photos extends React.Component {
                 id={el.id}
                 description={el.description}
                 isLiked={el.isLiked}
+                toggleVisibility={false}
               />
             );
           })

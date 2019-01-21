@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./style.css";
-import PhotosItem from "../PhotosItem";
+import { PhotosItemContainer } from "../../containers/PhotosItemContainer";
 
-const Favorites = ({ favPhotos }) => (
+const Favorites = ({ favPhotos, send }) => (
   <div className="favorites">
     <div className="favorite__header">
       <h1>Favorites photos</h1>
@@ -14,18 +15,23 @@ const Favorites = ({ favPhotos }) => (
     <div className="favorites__body">
       {favPhotos.map(el => {
         return (
-          <PhotosItem
+          <PhotosItemContainer
             key={el.id_photo}
             urls={el.urls}
             id={el.id_photo}
             description={el.description}
             isLiked
-            send={() => console.log("EMPTY")}
+            toggleVisibility={true}
           />
         );
       })}
     </div>
   </div>
 );
+
+Favorites.propTypes = {
+  favPhotos: PropTypes.array.isRequired,
+  send: PropTypes.func.isRequired
+};
 
 export default Favorites;
