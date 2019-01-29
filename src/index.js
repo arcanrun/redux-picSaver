@@ -1,16 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import * as VKConnect from "@vkontakte/vkui-connect";
+
 import "./index.css";
-import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { store } from "./configureStore";
-import { BrowserRouter as Router } from "react-router-dom";
+import Root from "./containers/Root";
+
+VKConnect.send("VKWebAppInit", {});
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <Root />
     </Router>
   </Provider>,
   document.getElementById("root")

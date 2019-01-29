@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from .models import Like
+from .models import Like, VkUser
 from django.http import JsonResponse
+from django.contrib.auth.models import User, Group
 
 
 import json
 
 
 def add_like(request):
+
     if request.method == 'POST':
         req = json.loads(str(request.body, encoding='utf-8'))
         id_photo = req['id_photo']
@@ -61,3 +63,28 @@ def islike(request):
                     continue
         print(response)
         return JsonResponse(response)
+
+
+def is_signed_up(request):
+    req = json.loads(str(request.body, encoding='utf-8'))
+    response = {'RESPONSE': False}
+    print('----->', req['vk_id'])
+    user = VkUser.objects.all()
+    for field in user:
+        if field.vk_id == req['vk_id']:
+            response['RESPONSE'] = True
+            break
+
+    return JsonResponse(response)
+
+
+def log_in_by_vk(request):
+    req = json.loads(str(request.body, encoding='utf-8'))
+    print('======>', req)
+    user = User(username=req['vk_id'],
+                first_name=req['name'], last_name=req['last_name'])
+    user.save()
+    vk_user = VkUser(user=user, vk_id=req['vk_id'])
+    vk_user.save()
+
+    return JsonResponse({"HELLO": "HI"})

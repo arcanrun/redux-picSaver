@@ -6,7 +6,8 @@ import unsplashApi from "../API/API";
 
 const mapStateToProps = state => ({
   photos: state.photos.photos,
-  searchFor: state.photos.searchFor
+  searchFor: state.photos.searchFor,
+  userName: state.user.name
 });
 
 // export const PhotosContainer = connect(mapStateToProps)(Photos);
@@ -71,7 +72,15 @@ class PhotosContainer extends React.Component {
   }
   render() {
     const { photos, isFetching, error } = this.state;
-    return <Photos photos={photos} isFetching={isFetching} error={error} />;
+
+    return (
+      <Photos
+        photos={photos}
+        isFetching={isFetching}
+        error={error}
+        userName={this.props.userName}
+      />
+    );
   }
 }
 

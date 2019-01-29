@@ -16,7 +16,7 @@ class Photos extends React.Component {
     error: bool.isRequired
   };
   render() {
-    const { photos, isFetching, error } = this.props;
+    const { photos, isFetching, error, userName } = this.props;
 
     return (
       <div className="photos">
@@ -36,6 +36,7 @@ class Photos extends React.Component {
                 description={el.description}
                 isLiked={el.isLiked}
                 toggleVisibility={false}
+                userName={userName}
               />
             );
           })

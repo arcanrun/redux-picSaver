@@ -7,11 +7,13 @@ import { toggleMenu } from "../actions/menuActions";
 const mapStateToProps = state => ({
   isVisible: state.menu.isVisible
 });
-const mapDispatchToProps = dispatch => ({
-  onClick: () => dispatch(toggleMenu())
-});
+// const mapDispatchToProps = dispatch => ({
+//   onClick() {
+//     dispatch(toggleMenu());
+//   }
+// }); ---> https://github.com/tayiorbeii/egghead.io_idiomatic_redux_course_notes/blob/master/09-Using_mapDispatchToProps_Shorthand_Notation.md
 
 export const HeaderContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  { onClick: toggleMenu }
 )(Header);

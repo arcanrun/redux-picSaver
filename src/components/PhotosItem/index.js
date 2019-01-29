@@ -8,7 +8,7 @@ import Spinner2 from "../Spinner2";
 export default class PhotosItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log("--->", this.props);
+
     this.state = {
       isLiked: this.props.isLiked,
       isSendingLike: false,
@@ -29,7 +29,8 @@ export default class PhotosItem extends React.Component {
     this.setState({ isSendingLike: !this.state.isSendingLike });
   };
   render() {
-    const { urls, id, description } = this.props;
+    const { urls, id, description, userName } = this.props;
+
     const { isLiked, isSendingLike } = this.state;
     if (!this.state.isVisible) {
       return null;
@@ -50,23 +51,27 @@ export default class PhotosItem extends React.Component {
               ? description.slice(0, 20) + "..."
               : description}
           </span>
-          <span>
-            {isSendingLike ? (
-              <Spinner2 />
-            ) : isLiked ? (
-              <i
-                className="heart_red"
-                style={{ cursor: "pointer" }}
-                onClick={this.toggleAndHandleLike}
-              />
-            ) : (
-              <i
-                className="heart_black"
-                style={{ cursor: "pointer" }}
-                onClick={this.toggleAndHandleLike}
-              />
-            )}
-          </span>
+          {!userName ? (
+            ""
+          ) : (
+            <span>
+              {isSendingLike ? (
+                <Spinner2 />
+              ) : isLiked ? (
+                <i
+                  className="heart_red"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.toggleAndHandleLike}
+                />
+              ) : (
+                <i
+                  className="heart_black"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.toggleAndHandleLike}
+                />
+              )}
+            </span>
+          )}
         </div>
       </div>
     );
@@ -78,7 +83,8 @@ PhotosItem.propTypes = {
   description: PropTypes.string,
   isLiked: PropTypes.bool.isRequired,
   send: PropTypes.func.isRequired,
-  toggleVisibility: PropTypes.bool.isRequired
+  toggleVisibility: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired
 };
 
 // export default PhotosItems;

@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('toggle-like/', views.add_like),
     path('is-like/', views.islike),
-    path('get-likes/', views.get_likes)
+    path('get-likes/', views.get_likes),
+    path('is-signed-up/', views.is_signed_up),
+    path('sign-up-vk/', views.log_in_by_vk)
 ]

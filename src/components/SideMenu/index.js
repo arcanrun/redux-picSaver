@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 import "../../static/icons.css";
+import { user } from "../../reducers/userReducer";
 const closeStyle = {
   position: "absolute",
   right: 0,
@@ -19,7 +20,7 @@ class SideMenu extends React.Component {
     }
   };
   render() {
-    const { isVisible } = this.props;
+    const { isVisible, userName } = this.props;
     return (
       <div
         className={isVisible ? "sidemenu" : "sidemenu sidemenu_display_hidden"}
@@ -30,12 +31,22 @@ class SideMenu extends React.Component {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/favorites">Favorites</Link>
-          </li>
-          <li>
-            <Link to="/:user">LogIn</Link>
-          </li>
+          {userName === "" ? (
+            ""
+          ) : (
+            <li>
+              <Link to="/favorites">Favorites</Link>
+            </li>
+          )}
+          {userName === "" ? (
+            <li>
+              <Link to="/login-page">LogIn</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/logout">LogIn</Link>
+            </li>
+          )}
         </ul>
       </div>
     );

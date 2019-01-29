@@ -5,7 +5,8 @@ import SideMenu from "../components/SideMenu/index";
 import { toggleMenu } from "../actions/menuActions";
 
 const mapStateToProps = state => ({
-  isVisible: state.menu.isVisible
+  isVisible: state.menu.isVisible,
+  userName: state.user.name
 });
 
 const mapDispatchToProps = dispatch => ({
