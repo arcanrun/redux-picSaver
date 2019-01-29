@@ -1,5 +1,4 @@
 import React from "react";
-import * as VKConnect from "@vkontakte/vkui-connect";
 import { fetchUser } from "../../actions/userActions";
 
 export default class Login extends React.Component {
@@ -18,7 +17,7 @@ export default class Login extends React.Component {
         {name ? (
           <div>
             <h1>{this.state.name}</h1>
-            <img src={photo} />{" "}
+            <img src={photo} alt={""} />{" "}
           </div>
         ) : (
           ""

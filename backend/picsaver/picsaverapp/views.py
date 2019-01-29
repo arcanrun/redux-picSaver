@@ -71,7 +71,7 @@ def is_signed_up(request):
     print('----->', req['vk_id'])
     user = VkUser.objects.all()
     for field in user:
-        if field.vk_id == req['vk_id']:
+        if str(field.vk_id) == str(req['vk_id']):
             response['RESPONSE'] = True
             break
 

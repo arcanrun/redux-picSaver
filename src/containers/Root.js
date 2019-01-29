@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import App from "../components/App";
@@ -29,7 +29,7 @@ class Root extends React.Component {
       method: "POST",
       body: JSON.stringify(data)
     }).then(res => res.json());
-
+    console.log("====>", res.RESPONSE);
     if (res.RESPONSE) {
       this.setState({
         isSignedUp: true,

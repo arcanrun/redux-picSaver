@@ -1,5 +1,4 @@
 import React from "react";
-import * as VKConnect from "@vkontakte/vkui-connect";
 import { connect } from "react-redux";
 
 import { addLikeAPI, SIGN_UP_VK } from "../API/API_LIKE";
@@ -21,9 +20,9 @@ class EntranceContainer extends React.Component {
     })
       .then(res => res.json())
       .catch(err => console.log(err));
-    // res.RESONES
-    //   ? this.setState({ logedIn: true, isSending: false })
-    //   : this.setState({ error: true });
+    res.RESONES
+      ? this.setState({ logedIn: true, isSending: false })
+      : this.setState({ error: true });
   };
   render() {
     const { name, last_name, avatar } = this.props.user;

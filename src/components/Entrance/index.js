@@ -17,4 +17,13 @@ const Entrance = ({ avatar, name, last_name, onClick, isSending, error }) => (
   </div>
 );
 
+Entrance.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isSending: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired
+};
+
 export default Entrance;
