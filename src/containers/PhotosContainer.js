@@ -3,14 +3,8 @@ import { connect } from "react-redux";
 
 import Photos from "../components/Photos/index";
 import unsplashApi from "../API/API";
+import { toggleLike } from "../actions/likesActions";
 
-const mapStateToProps = state => ({
-  photos: state.photos.photos,
-  searchFor: state.photos.searchFor,
-  userName: state.user.vk_id
-});
-
-// export const PhotosContainer = connect(mapStateToProps)(Photos);
 class PhotosContainer extends React.Component {
   state = {
     photos: [],
@@ -79,9 +73,18 @@ class PhotosContainer extends React.Component {
         isFetching={isFetching}
         error={error}
         userName={this.props.userName}
+        send={this.props.toggleLike}
       />
     );
   }
 }
+const mapStateToProps = state => ({
+  photos: state.photos.photos,
+  searchFor: state.photos.searchFor,
+  userName: state.user.vk_id
+});
 
-export default connect(mapStateToProps)(PhotosContainer);
+export default connect(
+  mapStateToProps,
+  { toggleLike }
+)(PhotosContainer);

@@ -11,6 +11,7 @@ def toggle_like(request):
 
     if request.method == 'POST':
         req = json.loads(str(request.body, encoding='utf-8'))
+        response = {'RESPONSE': '', 'STATUS': ''}
         id_photo = req['id_photo']
         urls = req['urls']
         description = req['description']
@@ -21,13 +22,28 @@ def toggle_like(request):
         for field in all_data:
             if ((id_photo == field.id_photos) and (id_user == field.id_user)):
                 Like.objects.filter(id_photos=id_photo).delete()
-                return JsonResponse({'LIKE_ID_PHOTOS': id_photo, 'STATUS': 'removed'})
+                response['RESPONSE'] = id_photo
+                response['STATUS'] = 'removed'
+                print('***toggle-like/***===>', response)
+                return JsonResponse(response)
 
         # try:
         like = Like(id_photos=str(id_photo), urls=str(
             urls), description=str(description), id_user=str(id_user))
         like.save()
-        return JsonResponse({'LIKE_ID_PHOTO': id_photo, 'STATUS': 'added'})
+
+        photo = Like.objects.filter(id_photos=id_photo, id_user=id_user)
+        for field in photo:
+            item = {}
+            item['ID'] = field.id
+            item['id_photo'] = field.id_photos
+            item['description'] = field.description
+            item['urls'] = json.loads(field.urls.replace("'", '"'))
+
+            response['RESPONSE'] = item
+        response['STATUS'] = 'added'
+        print('***toggle-like/***===>', response)
+        return JsonResponse(response)
         # except:
         # return JsonResponse({'ERROR_WHILE_ADDING_LIKE': 500})
     return JsonResponse(request)

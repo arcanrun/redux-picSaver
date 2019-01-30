@@ -21,13 +21,7 @@ export default class PhotosItem extends React.Component {
     if (this.state.toggleVisibility) {
       this.setState({ isVisible: !this.state.isVisible });
     }
-    this.props.send(
-      id,
-      urls,
-      description,
-      this.switchSendingLike,
-      this.props.userName
-    );
+    this.props.send(id, urls, description, this.props.userName);
     this.setState({ isLiked: !this.state.isLiked });
   };
 

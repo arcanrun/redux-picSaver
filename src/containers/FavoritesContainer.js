@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Favorites from "../components/Favorites";
 import { fetchFavPhotos } from "../actions/userActions";
+import { toggleLike } from "../actions/likesActions";
 import Spinner from "../components/Spinner";
 
 class FavoritesContainer extends React.Component {
@@ -32,7 +33,14 @@ class FavoritesContainer extends React.Component {
     if (isFetching) {
       return <Spinner />;
     }
-    return <Favorites userName={"" + this.props.vk_id} favPhotos={favPhotos} />;
+    return (
+      <Favorites
+        userName={"" + this.props.vk_id}
+        favPhotos={favPhotos}
+        favPhotosLength={this.props.photos.length}
+        send={this.props.toggleLike}
+      />
+    );
   }
 }
 const mapStateToProps = state => ({
@@ -43,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchFavPhotos }
+  { fetchFavPhotos, toggleLike }
 )(FavoritesContainer);

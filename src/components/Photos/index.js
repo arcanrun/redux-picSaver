@@ -5,6 +5,7 @@ import PhotosItemContainer from "../../containers/PhotosItemContainer";
 import ErrorBlock from "../ErrorBlock";
 import "./style.css";
 import Spinner from "../Spinner";
+import PhotosItem from "../PhotosItem";
 
 class Photos extends React.Component {
   static defaultProps = {
@@ -16,7 +17,7 @@ class Photos extends React.Component {
     error: bool.isRequired
   };
   render() {
-    const { photos, isFetching, error, userName } = this.props;
+    const { photos, isFetching, error, userName, send } = this.props;
 
     return (
       <div className="photos">
@@ -29,7 +30,7 @@ class Photos extends React.Component {
         ) : (
           photos.map(el => {
             return (
-              <PhotosItemContainer
+              <PhotosItem
                 key={el.id}
                 urls={el.urls}
                 id={el.id}
@@ -37,6 +38,7 @@ class Photos extends React.Component {
                 isLiked={el.isLiked}
                 toggleVisibility={false}
                 userName={userName}
+                send={this.props.send}
               />
             );
           })

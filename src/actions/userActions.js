@@ -15,7 +15,7 @@ export function fetchEmail() {
   };
 }
 
-const requestFavPhotos = user => ({
+const requestFavPhotos = () => ({
   type: types.GET_FAVPHOTOS_REQUEST,
   payload: {
     isFetching: true
