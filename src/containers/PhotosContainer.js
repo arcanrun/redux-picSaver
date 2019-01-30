@@ -7,7 +7,7 @@ import unsplashApi from "../API/API";
 const mapStateToProps = state => ({
   photos: state.photos.photos,
   searchFor: state.photos.searchFor,
-  userName: state.user.name
+  userName: state.user.vk_id
 });
 
 // export const PhotosContainer = connect(mapStateToProps)(Photos);

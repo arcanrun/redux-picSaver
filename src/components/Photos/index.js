@@ -1,7 +1,7 @@
 import React from "react";
 import { array, bool } from "prop-types";
 
-import { PhotosItemContainer } from "../../containers/PhotosItemContainer";
+import PhotosItemContainer from "../../containers/PhotosItemContainer";
 import ErrorBlock from "../ErrorBlock";
 import "./style.css";
 import Spinner from "../Spinner";

@@ -7,18 +7,19 @@ from django.contrib.auth.models import User, Group
 import json
 
 
-def add_like(request):
+def toggle_like(request):
 
     if request.method == 'POST':
         req = json.loads(str(request.body, encoding='utf-8'))
         id_photo = req['id_photo']
         urls = req['urls']
         description = req['description']
-        id_user = 'empty'
+        id_user = str(req['id_user'])
+        print('-->', req)
         # --------
         all_data = Like.objects.all()
         for field in all_data:
-            if id_photo == field.id_photos:
+            if ((id_photo == field.id_photos) and (id_user == field.id_user)):
                 Like.objects.filter(id_photos=id_photo).delete()
                 return JsonResponse({'LIKE_ID_PHOTOS': id_photo, 'STATUS': 'removed'})
 

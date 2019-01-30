@@ -1,16 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import PhotosItem from "../components/PhotosItem/index";
 import { addLikeAPI, ADD_LIKE } from "../API/API_LIKE";
 
-export class PhotosItemContainer extends React.Component {
-  sendLike = (id, urls, description, toggleState) => {
+export default class PhotosItemContainer extends React.Component {
+  sendLike = (id, urls, description, toggleState, idUser) => {
     toggleState();
     let sendData = {
       id_photo: id,
       urls,
       description,
-      id_user: "empty"
+      id_user: idUser
     };
     console.log("TOGGLE_LIKE_REQUEST", sendData);
     fetch(addLikeAPI(ADD_LIKE), {

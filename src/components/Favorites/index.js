@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./style.css";
-import { PhotosItemContainer } from "../../containers/PhotosItemContainer";
+import PhotosItemContainer from "../../containers/PhotosItemContainer";
 
 const Favorites = ({ favPhotos, userName }) => (
   <div className="favorites">
