@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import { HeaderContainer } from "../containers/HeaderContainer";
 import { SideMenuContainer } from "../containers/SideMenuContainer";
@@ -14,6 +14,8 @@ class App extends Component {
   logIn = () => {};
   render() {
     const { isSignedUp } = this.props;
+    // const isSignedUp = true;
+    // console.log(isSignedUp);
     return (
       <div className="App">
         {!isSignedUp ? (

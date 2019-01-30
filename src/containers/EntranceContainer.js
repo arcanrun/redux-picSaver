@@ -31,6 +31,7 @@ class EntranceContainer extends React.Component {
       : this.setState({ logedIn: false, error: true, isSending: false });
   };
   render() {
+    console.log("YOU ARE IN ENTRANCE CONTAINER");
     const { name, last_name, avatar } = this.props.user;
     const { isSending, error, logedIn } = this.state;
     return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import App from "../components/App";
 import * as vkActions from "../actions/vk";
@@ -61,7 +62,9 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(
-  mapStateToProps,
-  { initApp: vkActions.initApp, fetchUser }
-)(Root);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { initApp: vkActions.initApp, fetchUser }
+  )(Root)
+);
