@@ -18,9 +18,21 @@ export function initApp() {
           break;
         case "VKWebAppGetUserInfoFailed":
           dispatch({
-            type: userTypes.USER_FETCHED_FAILD,
+            type: userTypes.USER_FETCHED_FAILED,
             payload: data,
             error: true
+          });
+          break;
+        case "VKWebAppGetEmailResult":
+          dispatch({
+            type: userTypes.EMAIL_FETCHED_SUCCESS,
+            payload: data
+          });
+          break;
+        case "VKWebAppGetEmailFailed":
+          dispatch({
+            type: userTypes.EMAIL_FETCHED_FAILED,
+            payload: data
           });
           break;
         default:

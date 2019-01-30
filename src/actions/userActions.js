@@ -5,3 +5,9 @@ export function fetchUser() {
     VKConnect.send("VKWebAppGetUserInfo", {});
   };
 }
+
+export function fetchEmail() {
+  return () => {
+    VKConnect.send("VKWebAppGetEmail", {});
+  };
+}

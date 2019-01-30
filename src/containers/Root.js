@@ -29,7 +29,7 @@ class Root extends React.Component {
       method: "POST",
       body: JSON.stringify(data)
     }).then(res => res.json());
-    console.log("====>", res.RESPONSE);
+    console.log("<Root/>====>", res.RESPONSE);
     if (res.RESPONSE) {
       this.setState({
         isSignedUp: true,

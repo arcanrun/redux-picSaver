@@ -5,6 +5,7 @@ const initialState = {
   last_name: "",
   avatar: "",
   vk_id: "",
+  email: "",
   favorites_photos: [],
   isFetching: false,
   error: false,
@@ -21,6 +22,10 @@ export const user = (state = initialState, action) => {
         avatar: action.payload.photo_200,
         vk_id: action.payload.id
       };
+    case types.EMAIL_FETCHED_SUCCESS:
+      return { ...state, email: action.payload.email };
+    case types.EMAIL_FETCHED_FAILED:
+      return { ...state, email: action.payload.error_type };
     default:
       return state;
   }

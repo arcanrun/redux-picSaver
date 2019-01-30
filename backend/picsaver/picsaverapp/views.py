@@ -80,11 +80,17 @@ def is_signed_up(request):
 
 def log_in_by_vk(request):
     req = json.loads(str(request.body, encoding='utf-8'))
-    print('======>', req)
+    print('req======>', req)
+    response = {'RESPONSE': False}
+    # try:
     user = User(username=req['vk_id'],
-                first_name=req['name'], last_name=req['last_name'])
+                first_name=req['name'], last_name=req['last_name'], email=req['email'])
     user.save()
     vk_user = VkUser(user=user, vk_id=req['vk_id'])
     vk_user.save()
-
-    return JsonResponse({"HELLO": "HI"})
+    response['RESPONSE'] = True
+    print('response==>', response)
+    return JsonResponse(response)
+    # except:
+    #     print('response==>', response)
+    #     return JsonResponse(response)

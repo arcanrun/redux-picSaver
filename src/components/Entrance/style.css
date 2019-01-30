@@ -7,15 +7,20 @@
   margin-top: 10%;
   border-radius: 2px;
 }
+.entrance__title {
+  font-size: 25px;
+  color: rgb(104, 104, 104);
+}
 .entrance__avatar {
   border-radius: 100%;
+  max-width: 100px;
 }
 .entrance__btn {
   transition: 0.2s;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   border: 0px;
   background: #42648b;
   font-size: 15px;

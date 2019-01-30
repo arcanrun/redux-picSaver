@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { addLikeAPI, SIGN_UP_VK } from "../API/API_LIKE";
 import Entrance from "../components/Entrance";
+import { fetchEmail } from "../actions/userActions";
 
 class EntranceContainer extends React.Component {
   state = {
@@ -10,23 +11,28 @@ class EntranceContainer extends React.Component {
     logedIn: false,
     error: false
   };
+  componentDidMount() {
+    this.props.fetchEmail();
+  }
   logIn = async () => {
-    const { vk_id, name, last_name } = this.props.user;
+    const { vk_id, name, last_name, email } = this.props.user;
     this.setState({ isSending: true });
-    const data = { vk_id, name, last_name };
+    const data = { vk_id, name, last_name, email };
+    console.log(data);
     let res = await fetch(addLikeAPI(SIGN_UP_VK), {
       method: "POST",
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .catch(err => console.log(err));
-    res.RESONES
-      ? this.setState({ logedIn: true, isSending: false })
-      : this.setState({ error: true });
+      .catch(err => console.log(new Error(err)));
+    console.log("res===>", res.RESPONSE);
+    res.RESPONSE
+      ? this.setState({ logedIn: true, isSending: false, error: false })
+      : this.setState({ logedIn: false, error: true, isSending: false });
   };
   render() {
     const { name, last_name, avatar } = this.props.user;
-    const { isSending, error } = this.state;
+    const { isSending, error, logedIn } = this.state;
     return (
       <Entrance
         name={name}
@@ -35,6 +41,7 @@ class EntranceContainer extends React.Component {
         isSending={isSending}
         error={error}
         onClick={this.logIn}
+        isLogedIn={logedIn}
       />
     );
   }
@@ -44,4 +51,7 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(EntranceContainer);
+export default connect(
+  mapStateToProps,
+  { fetchEmail }
+)(EntranceContainer);
