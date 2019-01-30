@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import "./style.css";
 import "../../static/icons.css";
-import Spinner2 from "../Spinner2";
 
 export default class PhotosItem extends React.Component {
   constructor(props) {
@@ -11,7 +10,6 @@ export default class PhotosItem extends React.Component {
 
     this.state = {
       isLiked: this.props.isLiked,
-      isSendingLike: false,
       toggleVisibility: this.props.toggleVisibility,
       isVisible: true
     };
@@ -30,8 +28,7 @@ export default class PhotosItem extends React.Component {
   };
   render() {
     const { urls, id, description, userName } = this.props;
-
-    const { isLiked, isSendingLike } = this.state;
+    const { isLiked } = this.state;
     if (!this.state.isVisible) {
       return null;
     }
@@ -55,9 +52,7 @@ export default class PhotosItem extends React.Component {
             ""
           ) : (
             <span>
-              {isSendingLike ? (
-                <Spinner2 />
-              ) : isLiked ? (
+              {isLiked ? (
                 <i
                   className="heart_red"
                   style={{ cursor: "pointer" }}

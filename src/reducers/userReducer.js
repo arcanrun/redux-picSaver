@@ -64,7 +64,7 @@ export const user = (state = initialState, action) => {
         ...state,
         favorites_photos: {
           ...state.favorites_photos,
-          toggleIsFetching: action.payload.isFetching
+          isFetching: action.payload.isFetching
         }
       };
     case types.TOGGLE_LIKE_REMOVE_SUCCESS:

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 import "../../static/icons.css";
-import { user } from "../../reducers/userReducer";
+
 const closeStyle = {
   position: "absolute",
   right: 0,

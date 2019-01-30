@@ -1,7 +1,6 @@
 import React from "react";
 import { array, bool } from "prop-types";
 
-import PhotosItemContainer from "../../containers/PhotosItemContainer";
 import ErrorBlock from "../ErrorBlock";
 import "./style.css";
 import Spinner from "../Spinner";
@@ -17,7 +16,14 @@ class Photos extends React.Component {
     error: bool.isRequired
   };
   render() {
-    const { photos, isFetching, error, userName, send } = this.props;
+    const {
+      photos,
+      isFetching,
+      error,
+      userName,
+      send,
+      isSendingLike
+    } = this.props;
 
     return (
       <div className="photos">
@@ -38,7 +44,8 @@ class Photos extends React.Component {
                 isLiked={el.isLiked}
                 toggleVisibility={false}
                 userName={userName}
-                send={this.props.send}
+                send={send}
+                isSendingLike={isSendingLike}
               />
             );
           })

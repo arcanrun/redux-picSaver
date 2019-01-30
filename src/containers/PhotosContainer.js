@@ -53,7 +53,7 @@ class PhotosContainer extends React.Component {
     });
     this.setState({ photos: photosArrayUnsplash });
   }
-  queryIsLike(arr) {
+  async queryIsLike(arr) {
     return fetch("http://127.0.0.1:8000/is-like/", {
       method: "POST",
       body: JSON.stringify(arr)
@@ -66,20 +66,20 @@ class PhotosContainer extends React.Component {
   }
   render() {
     const { photos, isFetching, error } = this.state;
+    const { userName, toggleLike } = this.props;
 
     return (
       <Photos
         photos={photos}
         isFetching={isFetching}
         error={error}
-        userName={this.props.userName}
-        send={this.props.toggleLike}
+        userName={userName}
+        send={toggleLike}
       />
     );
   }
 }
 const mapStateToProps = state => ({
-  photos: state.photos.photos,
   searchFor: state.photos.searchFor,
   userName: state.user.vk_id
 });

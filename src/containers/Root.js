@@ -25,12 +25,10 @@ class Root extends React.Component {
   async fetcher() {
     const { vk_id } = this.props.user;
     const data = { vk_id };
-    // console.log("------>", data);
     let res = await fetch(addLikeAPI(IS_SIGNED_UP), {
       method: "POST",
       body: JSON.stringify(data)
     }).then(res => res.json());
-    console.log("<Root/>====>", res.RESPONSE);
     if (res.RESPONSE) {
       this.setState({
         isSignedUp: true,
