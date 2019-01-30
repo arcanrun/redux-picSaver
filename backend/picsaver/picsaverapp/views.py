@@ -33,19 +33,22 @@ def add_like(request):
 
 
 def get_likes(request):
-    response = {'RESPONSE': 'ALL_LIKE', 'USER': 'EMPTY'}
-
+    req = json.loads(str(request.body, encoding='utf-8'))
+    userId = str(req['vk_id'])
+    response = {'RESPONSE': []}
+    print('==>', req)
     all_data = Like.objects.all()
     arr_fields = []
     for field in all_data:
         item = {}
-        item['ID'] = field.id
-        item['id_photo'] = field.id_photos
-        item['description'] = field.description
-        item['urls'] = json.loads(field.urls.replace("'", '"'))
-
-        arr_fields.append(item)
-    response['data'] = arr_fields
+        if field.id_user == userId:
+            print(field.id_user)
+            item['ID'] = field.id
+            item['id_photo'] = field.id_photos
+            item['description'] = field.description
+            item['urls'] = json.loads(field.urls.replace("'", '"'))
+            arr_fields.append(item)
+    response['RESPONSE'] = arr_fields
     print(response)
     return JsonResponse(response)
 

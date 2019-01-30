@@ -38,15 +38,6 @@ class SideMenu extends React.Component {
               <Link to="/favorites">Favorites</Link>
             </li>
           )}
-          {userName === "" ? (
-            <li>
-              <Link to="/login-page">LogIn</Link>
-            </li>
-          ) : (
-            <li>
-              <Link to="/logout">LogIn</Link>
-            </li>
-          )}
         </ul>
       </div>
     );

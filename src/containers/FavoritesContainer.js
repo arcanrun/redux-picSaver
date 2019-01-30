@@ -1,27 +1,47 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Favorites from "../components/Favorites";
-import { API_LIKE, GET_LIKES, addLikeAPI, ADD_LIKE } from "../API/API_LIKE";
+import { fetchFavPhotos } from "../actions/userActions";
+import Spinner from "../components/Spinner";
 
 class FavoritesContainer extends React.Component {
-  state = {
-    favPhotos: []
-  };
-
-  componentDidMount() {
-    fetch(API_LIKE + GET_LIKES)
-      .then(res => res.json())
-      .then(
-        res => this.setState({ favPhotos: res.data }, console.log(res.data)),
-        res => console.log(res)
-      )
-      .catch(res => console.log(new Error(res)));
+  constructor(props) {
+    super(props);
+    this.state = {
+      favPhotos: this.props.photos ? this.props.photos : [],
+      isFetching: this.props.photos ? false : true
+    };
   }
-  render() {
-    const { favPhotos } = this.state;
 
-    return <Favorites favPhotos={favPhotos} send={this.sendLike} />;
+  async componentDidMount() {
+    let res = await this.props.fetchFavPhotos(this.props.vk_id);
+    if (res) {
+      this.setState({ favPhotos: res.RESPONSE, isFetching: false });
+    }
+  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.photos !== this.props.photos) {
+  //     this.setState({ isFetching: false });
+  //   }
+  // }
+
+  render() {
+    const { favPhotos, isFetching } = this.state;
+    console.log("<favCOntainer>", isFetching);
+    if (isFetching) {
+      return <Spinner />;
+    }
+    return <Favorites userName={"" + this.props.vk_id} favPhotos={favPhotos} />;
   }
 }
+const mapStateToProps = state => ({
+  vk_id: state.user.vk_id,
+  photos: state.user.favorites_photos.photos,
+  isFetching: state.user.favorites_photos.isFetching
+});
 
-export default FavoritesContainer;
+export default connect(
+  mapStateToProps,
+  { fetchFavPhotos }
+)(FavoritesContainer);
