@@ -3,22 +3,39 @@
   left: 0;
   height: 100%;
   top: 0;
-  width: 50%;
+  width: 100%;
   background: white;
   box-shadow: 0px 0px 5px 5px rgba(26, 25, 25, 0.151);
   z-index: 1000;
   transition: 0.3s;
 }
 .sidemenu_display_hidden {
-  left: -100%;
+  left: -120%;
 }
 .sidemenu__items {
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-left: -40px;
+  margin-top: 10%;
+  text-align: center;
   list-style-type: none;
   position: absolute;
   top: 10%;
 }
 .sidemenu__items li {
   margin: 10px;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: bold;
+}
+.sidemenu__items li a {
+  transition: 0.2s;
+  text-decoration: none;
+  color: #000000;
+}
+.sidemenu__items li a:active {
+  color: #000000;
+}
+.sidemenu__items li a:hover {
+  font-size: 35px;
 }
