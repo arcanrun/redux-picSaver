@@ -7,6 +7,9 @@ import Spinner from "../Spinner";
 import PhotosItem from "../PhotosItem";
 
 class Photos extends React.Component {
+  state = {
+    page: 0
+  };
   static defaultProps = {
     photos: []
   };
@@ -15,6 +18,7 @@ class Photos extends React.Component {
     isFetching: bool.isRequired,
     error: bool.isRequired
   };
+
   render() {
     const {
       photos,
@@ -50,6 +54,7 @@ class Photos extends React.Component {
             );
           })
         )}
+        <a href="#!">show more</a>
       </div>
     );
   }
