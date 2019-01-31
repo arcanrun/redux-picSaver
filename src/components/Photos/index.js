@@ -20,13 +20,21 @@ class Photos extends React.Component {
     error: bool.isRequired,
     showMore: func.isRequired
   };
+
   showMore = () => {
     console.log(this.props);
     this.setState({ page: this.state.page + 1 }, () =>
       this.props.showMore(this.props.searchFor, this.state.page)
     );
   };
+
+  componentDidUpdate(prevState) {
+    if (prevState.searchFor !== this.props.searchFor) {
+      this.setState({ page: 1 });
+    }
+  }
   render() {
+    console.log("state page: ", this.state.page);
     const {
       photos,
       isFetching,

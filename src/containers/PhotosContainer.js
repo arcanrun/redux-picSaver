@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 
 import Photos from "../components/Photos/index";
 import { toggleLike } from "../actions/likesActions";
-import { fetchPhotos, showMore, showMoreInitialState } from "../actions/index";
+import { fetchPhotos, showMore } from "../actions/index";
 
 class PhotosContainer extends React.Component {
   async componentDidMount() {
-    this.props.showMoreInitialState();
     this.fetcher();
   }
   componentDidUpdate(prevProps) {
@@ -56,5 +55,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { toggleLike, fetchPhotos, showMore, showMoreInitialState }
+  { toggleLike, fetchPhotos, showMore }
 )(PhotosContainer);

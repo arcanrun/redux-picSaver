@@ -1,7 +1,9 @@
 import {
   GET_PHOTOS_REQUEST,
   GET_PHOTOS_SUCCESS,
-  GET_PHOTOS_FAILURE
+  GET_PHOTOS_FAILURE,
+  SHOW_MORE_REQUEST,
+  SHOW_MORE_SUCCESS
 } from "../constants/requestsUnsplashActions";
 import unsplashApi from "../API/API";
 
@@ -73,7 +75,7 @@ function queryIsLike(arr) {
 
 const reciveMorePhotos = photos => {
   return {
-    type: "SHOW_MORE_SUCCESS",
+    type: SHOW_MORE_SUCCESS,
     payload: {
       photos: photos,
       isFetching: false
@@ -81,23 +83,20 @@ const reciveMorePhotos = photos => {
   };
 };
 
-export const showMoreInitialState = () => ({
-  type: "SHOW_MORE_INITIAL_STATE"
+const requestMorePhotos = str => ({
+  type: SHOW_MORE_REQUEST,
+  payload: { isFetching: true, searchFor: str }
 });
 
 export function showMore(str, page) {
   return async dispatch => {
-    dispatch({
-      type: "SHOW_MORE_REQUEST",
-      payload: { isFetching: true, searchFor: str }
-    });
+    dispatch(requestMorePhotos(str));
     let photosArrayUnsplash = await fetch(unsplashApi(str, page))
       .then(res => {
         return res.json();
       })
       .then(res => res.results)
       .catch(err => dispatch(errorPhotos(err)));
-
     let ids = photosArrayUnsplash.map(el => el.id);
 
     let withCheckdLikes = await queryIsLike(ids);

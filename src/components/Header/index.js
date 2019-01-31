@@ -14,7 +14,7 @@ const menuStyle = {
 const Header = ({ onClick }) => (
   <header className="header">
     <i className="menu" style={menuStyle} onClick={onClick} />
-    <p className="header__title">picSaver</p>
+    <p className="header__title">PhotoLike</p>
   </header>
 );
 Header.propTypes = {
