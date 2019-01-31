@@ -17,7 +17,7 @@ const recivePhotos = photos => {
   return {
     type: GET_PHOTOS_SUCCESS,
     payload: {
-      photos: photos.length,
+      photos: photos,
       isFetching: false
     }
   };
@@ -32,10 +32,10 @@ const errorPhotos = err => ({
   }
 });
 
-export function fetchPhotos(str) {
+export function fetchPhotos(str, page) {
   return async function(dispatch) {
     dispatch(requestPhotos(str));
-    let photosArrayUnsplash = await fetch(unsplashApi(str))
+    let photosArrayUnsplash = await fetch(unsplashApi(str, page))
       .then(res => {
         return res.json();
       })
@@ -69,4 +69,48 @@ function queryIsLike(arr) {
       return res.IS_LIKED;
     })
     .catch(err => console.log(new Error(err)));
+}
+
+const reciveMorePhotos = photos => {
+  return {
+    type: "SHOW_MORE_SUCCESS",
+    payload: {
+      photos: photos,
+      isFetching: false
+    }
+  };
+};
+
+export const showMoreInitialState = () => ({
+  type: "SHOW_MORE_INITIAL_STATE"
+});
+
+export function showMore(str, page) {
+  return async dispatch => {
+    dispatch({
+      type: "SHOW_MORE_REQUEST",
+      payload: { isFetching: true, searchFor: str }
+    });
+    let photosArrayUnsplash = await fetch(unsplashApi(str, page))
+      .then(res => {
+        return res.json();
+      })
+      .then(res => res.results)
+      .catch(err => dispatch(errorPhotos(err)));
+
+    let ids = photosArrayUnsplash.map(el => el.id);
+
+    let withCheckdLikes = await queryIsLike(ids);
+    if (withCheckdLikes === undefined) withCheckdLikes = [];
+    photosArrayUnsplash.map(el => {
+      if (withCheckdLikes.includes(el.id)) {
+        el.isLiked = true;
+      } else {
+        el.isLiked = false;
+      }
+      return el;
+    });
+
+    dispatch(reciveMorePhotos(photosArrayUnsplash));
+  };
 }

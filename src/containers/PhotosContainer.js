@@ -2,16 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Photos from "../components/Photos/index";
-import unsplashApi from "../API/API";
 import { toggleLike } from "../actions/likesActions";
+import { fetchPhotos, showMore, showMoreInitialState } from "../actions/index";
 
 class PhotosContainer extends React.Component {
-  state = {
-    photos: [],
-    isFetching: false,
-    error: false
-  };
   async componentDidMount() {
+    this.props.showMoreInitialState();
     this.fetcher();
   }
   componentDidUpdate(prevProps) {
@@ -21,70 +17,44 @@ class PhotosContainer extends React.Component {
   }
   async fetcher() {
     const str = this.props.searchFor;
-
-    this.setState({ isFetching: !this.state.isFetching }, () =>
-      console.log("GET_PHOTOS_REQUEST", `isFetching: ${this.state.isFetching}`)
-    );
-
-    let photosArrayUnsplash = await fetch(unsplashApi(str))
-      .then(res => {
-        return res.json();
-      })
-      .then(res => {
-        this.setState({ isFetching: !this.state.isFetching });
-        return res.results;
-      })
-      .catch(err => {
-        this.setState({ isFetching: !this.state.isFetching });
-        console.log(new Error(err));
-      });
-
-    let ids = photosArrayUnsplash.map(el => el.id);
-
-    let withCheckdLikes = await this.queryIsLike(ids);
-    if (withCheckdLikes === undefined) withCheckdLikes = [];
-    photosArrayUnsplash.map(el => {
-      if (withCheckdLikes.includes(el.id)) {
-        el.isLiked = true;
-      } else {
-        el.isLiked = false;
-      }
-      return el;
-    });
-    this.setState({ photos: photosArrayUnsplash });
-  }
-  async queryIsLike(arr) {
-    return fetch("http://127.0.0.1:8000/is-like/", {
-      method: "POST",
-      body: JSON.stringify(arr)
-    })
-      .then(res => res.json())
-      .then(res => {
-        return res.IS_LIKED;
-      })
-      .catch(err => console.log(new Error(err)));
+    this.props.fetchPhotos(str);
   }
   render() {
-    const { photos, isFetching, error } = this.state;
-    const { userName, toggleLike } = this.props;
+    const {
+      photos,
+      userName,
+      toggleLike,
+      isFetching,
+      error,
+      showMore,
+      searchFor,
+      isFetchingForMore
+    } = this.props;
 
     return (
       <Photos
         photos={photos}
         isFetching={isFetching}
+        isFetchingForMore={isFetchingForMore}
         error={error}
         userName={userName}
         send={toggleLike}
+        showMore={showMore}
+        searchFor={searchFor}
       />
     );
   }
 }
 const mapStateToProps = state => ({
   searchFor: state.photos.searchFor,
-  userName: state.user.vk_id
+  userName: state.user.vk_id,
+  photos: state.photos.photos,
+  isFetching: state.photos.isFetching,
+  error: state.photos.error,
+  isFetchingForMore: state.photos.isFetchingForMore
 });
 
 export default connect(
   mapStateToProps,
-  { toggleLike }
+  { toggleLike, fetchPhotos, showMore, showMoreInitialState }
 )(PhotosContainer);

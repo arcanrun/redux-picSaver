@@ -1,14 +1,15 @@
 import React from "react";
-import { array, bool } from "prop-types";
+import { array, bool, func } from "prop-types";
 
 import WarningBlock from "../WarningBlock";
 import "./style.css";
 import Spinner from "../Spinner";
 import PhotosItem from "../PhotosItem";
+import Spinner2 from "../Spinner2";
 
 class Photos extends React.Component {
   state = {
-    page: 0
+    page: 1
   };
   static defaultProps = {
     photos: []
@@ -16,9 +17,15 @@ class Photos extends React.Component {
   static propTypes = {
     photos: array.isRequired,
     isFetching: bool.isRequired,
-    error: bool.isRequired
+    error: bool.isRequired,
+    showMore: func.isRequired
   };
-
+  showMore = () => {
+    console.log(this.props);
+    this.setState({ page: this.state.page + 1 }, () =>
+      this.props.showMore(this.props.searchFor, this.state.page)
+    );
+  };
   render() {
     const {
       photos,
@@ -26,9 +33,9 @@ class Photos extends React.Component {
       error,
       userName,
       send,
-      isSendingLike
+      isSendingLike,
+      isFetchingForMore
     } = this.props;
-
     return (
       <div className="photos">
         {isFetching ? (
@@ -54,7 +61,11 @@ class Photos extends React.Component {
             );
           })
         )}
-        <a href="#!">show more</a>
+        {isFetchingForMore ? (
+          <Spinner2 />
+        ) : (
+          <span onClick={this.showMore}>show more</span>
+        )}
       </div>
     );
   }

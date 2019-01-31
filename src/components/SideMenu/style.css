@@ -24,6 +24,7 @@
   top: 10%;
 }
 .sidemenu__items li {
+  text-transform: uppercase;
   margin: 10px;
   font-size: 30px;
   font-weight: bold;
