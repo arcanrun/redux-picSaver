@@ -3,3 +3,24 @@
   margin: auto;
   width: 300px;
 }
+.photos__show-more-btn {
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(66, 100, 142, 0.8);
+}
+.photos__show-more-btn:hover {
+  font-size: 17px;
+  color: rgba(66, 100, 142, 1);
+}
+.photos__show-more-block {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.photos__show-more-block .spinner2 {
+  margin: auto;
+}

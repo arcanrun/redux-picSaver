@@ -34,7 +34,8 @@ class Photos extends React.Component {
       userName,
       send,
       isSendingLike,
-      isFetchingForMore
+      isFetchingForMore,
+      searchFor
     } = this.props;
     return (
       <div className="photos">
@@ -61,11 +62,17 @@ class Photos extends React.Component {
             );
           })
         )}
-        {isFetchingForMore ? (
-          <Spinner2 />
-        ) : (
-          <span onClick={this.showMore}>show more</span>
-        )}
+        <div className="photos__show-more-block">
+          {!searchFor || isFetching ? (
+            ""
+          ) : isFetchingForMore ? (
+            <Spinner2 />
+          ) : (
+            <span className="photos__show-more-btn" onClick={this.showMore}>
+              show more
+            </span>
+          )}
+        </div>
       </div>
     );
   }
