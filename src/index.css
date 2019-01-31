@@ -8,6 +8,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "Lobster";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./static/Lobster.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

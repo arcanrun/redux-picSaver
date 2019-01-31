@@ -1,7 +1,7 @@
 import React from "react";
 import { array, bool } from "prop-types";
 
-import ErrorBlock from "../ErrorBlock";
+import WarningBlock from "../WarningBlock";
 import "./style.css";
 import Spinner from "../Spinner";
 import PhotosItem from "../PhotosItem";
@@ -30,9 +30,9 @@ class Photos extends React.Component {
         {isFetching ? (
           <Spinner />
         ) : error ? (
-          <ErrorBlock title={"Error while fetching"} />
+          <WarningBlock title={"Error while fetching"} />
         ) : photos.length === 0 ? (
-          <ErrorBlock title={"Nothing found"} />
+          <WarningBlock title={"Nothing found"} />
         ) : (
           photos.map(el => {
             return (
