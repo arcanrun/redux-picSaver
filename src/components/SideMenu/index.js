@@ -29,7 +29,7 @@ class SideMenu extends React.Component {
         <i className="close" style={closeStyle} />
         <ul className="sidemenu__items">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/redux-picSaver">Home</Link>
           </li>
           {userName === "" ? (
             ""
