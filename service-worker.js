@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/vk-app-photoLike/precache-manifest.c9e98c6d91777752686329001200e112.js"
+  "/vk-app-photolike/precache-manifest.a5b6528d9033df1a1fad2503746c167c.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/vk-app-photoLike/index.html", {
+workbox.routing.registerNavigationRoute("/vk-app-photolike/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
