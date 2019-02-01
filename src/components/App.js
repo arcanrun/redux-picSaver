@@ -26,7 +26,7 @@ class App extends Component {
             <HeaderContainer />
 
             <Switch>
-              <Route exact path="/" component={Main} />
+              <Route exact path="/redux-picSaver" component={Main} />
               <Route path="/favorites" component={FavoritesContainer} />
               <Route path="/login-page" component={Login} />
               <Route component={NoMatch} />

@@ -2,7 +2,7 @@
   "name": "redux-picsaver",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://arcanrun.github.io/vk-app-photoLike",
+  "homepage": "https://arcanrun.github.io/redux-picSaver",
   "dependencies": {
     "@vkontakte/vkui-connect": "^1.1.3",
     "prop-types": "^15.6.2",
