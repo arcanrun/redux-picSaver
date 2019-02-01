@@ -27,13 +27,16 @@ class SideMenu extends React.Component {
         onClick={this.handleToggle}
       >
         <i className="close" style={closeStyle} />
-        <div className="sidemenu__avatar-block">
-          <img src={avatar} alt="avatar" />
-          <p>
-            {userName} {lastName}
-          </p>
-        </div>
+
         <ul className="sidemenu__items">
+          <li>
+            <div className="sidemenu__avatar-block">
+              <img src={avatar} alt="avatar" />
+              <p>
+                {userName} {lastName}
+              </p>
+            </div>
+          </li>
           <li>
             <Link to="/redux-picSaver">Home</Link>
           </li>
