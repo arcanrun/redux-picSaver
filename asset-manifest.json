@@ -1,15 +1,15 @@
 {
-  "main.css": "/vk-app-photolike/static/css/main.a1258604.chunk.css",
-  "main.js": "/vk-app-photolike/static/js/main.5ca2fa60.chunk.js",
-  "main.js.map": "/vk-app-photolike/static/js/main.5ca2fa60.chunk.js.map",
-  "static/js/1.ed574fef.chunk.js": "/vk-app-photolike/static/js/1.ed574fef.chunk.js",
-  "static/js/1.ed574fef.chunk.js.map": "/vk-app-photolike/static/js/1.ed574fef.chunk.js.map",
-  "runtime~main.js": "/vk-app-photolike/static/js/runtime~main.ce60ca26.js",
-  "runtime~main.js.map": "/vk-app-photolike/static/js/runtime~main.ce60ca26.js.map",
-  "static/media/icons.css": "/vk-app-photolike/static/media/menu.14c32a6d.svg",
-  "static/media/index.css": "/vk-app-photolike/static/media/Lobster.2d942223.ttf",
-  "static/css/main.a1258604.chunk.css.map": "/vk-app-photolike/static/css/main.a1258604.chunk.css.map",
-  "index.html": "/vk-app-photolike/index.html",
-  "precache-manifest.a5b6528d9033df1a1fad2503746c167c.js": "/vk-app-photolike/precache-manifest.a5b6528d9033df1a1fad2503746c167c.js",
-  "service-worker.js": "/vk-app-photolike/service-worker.js"
+  "main.css": "/vk-app-photoLike/static/css/main.38880bc9.chunk.css",
+  "main.js": "/vk-app-photoLike/static/js/main.ace83697.chunk.js",
+  "main.js.map": "/vk-app-photoLike/static/js/main.ace83697.chunk.js.map",
+  "static/js/1.ed574fef.chunk.js": "/vk-app-photoLike/static/js/1.ed574fef.chunk.js",
+  "static/js/1.ed574fef.chunk.js.map": "/vk-app-photoLike/static/js/1.ed574fef.chunk.js.map",
+  "runtime~main.js": "/vk-app-photoLike/static/js/runtime~main.fa82b390.js",
+  "runtime~main.js.map": "/vk-app-photoLike/static/js/runtime~main.fa82b390.js.map",
+  "static/media/icons.css": "/vk-app-photoLike/static/media/heart_red.c4cfb5ca.svg",
+  "static/media/index.css": "/vk-app-photoLike/static/media/Lobster.2d942223.ttf",
+  "static/css/main.38880bc9.chunk.css.map": "/vk-app-photoLike/static/css/main.38880bc9.chunk.css.map",
+  "index.html": "/vk-app-photoLike/index.html",
+  "precache-manifest.c9e98c6d91777752686329001200e112.js": "/vk-app-photoLike/precache-manifest.c9e98c6d91777752686329001200e112.js",
+  "service-worker.js": "/vk-app-photoLike/service-worker.js"
 }
