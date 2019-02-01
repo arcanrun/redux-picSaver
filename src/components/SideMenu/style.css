@@ -17,7 +17,7 @@
   display: block;
   margin: auto;
   margin-left: -40px;
-  margin-top: 10%;
+  margin-top: 25%;
   text-align: center;
   list-style-type: none;
   position: absolute;
@@ -39,4 +39,13 @@
 }
 .sidemenu__items li a:hover {
   font-size: 35px;
+}
+.sidemenu__avatar-block {
+  text-align: center;
+  margin-top: 10%;
+  color: #6b6b6b;
+}
+.sidemenu__avatar-block img {
+  border-radius: 100%;
+  max-width: 100px;
 }

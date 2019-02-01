@@ -20,13 +20,19 @@ class SideMenu extends React.Component {
     }
   };
   render() {
-    const { isVisible, userName } = this.props;
+    const { isVisible, userName, avatar, lastName } = this.props;
     return (
       <div
         className={isVisible ? "sidemenu" : "sidemenu sidemenu_display_hidden"}
         onClick={this.handleToggle}
       >
         <i className="close" style={closeStyle} />
+        <div className="sidemenu__avatar-block">
+          <img src={avatar} alt="avatar" />
+          <p>
+            {userName} {lastName}
+          </p>
+        </div>
         <ul className="sidemenu__items">
           <li>
             <Link to="/redux-picSaver">Home</Link>

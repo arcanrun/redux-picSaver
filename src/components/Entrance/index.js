@@ -15,7 +15,7 @@ const Entrance = ({
   isLogedIn
 }) => {
   if (isLogedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="/redux-picSaver" />;
   }
   return (
     <div className="entrance">
