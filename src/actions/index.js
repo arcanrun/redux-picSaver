@@ -6,6 +6,7 @@ import {
   SHOW_MORE_SUCCESS
 } from "../constants/requestsUnsplashActions";
 import unsplashApi from "../API/API";
+import { addLikeAPI, IS_LIKE } from "../API/API_LIKE";
 
 export const requestPhotos = str => ({
   type: GET_PHOTOS_REQUEST,
@@ -62,7 +63,7 @@ export function fetchPhotos(str, page) {
 }
 
 function queryIsLike(arr) {
-  return fetch("http://127.0.0.1:8000/is-like/", {
+  return fetch(addLikeAPI(IS_LIKE), {
     method: "POST",
     body: JSON.stringify(arr)
   })
