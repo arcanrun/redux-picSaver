@@ -24,19 +24,19 @@ self.__precacheManifest = [
     "url": "/redux-picSaver/static/js/runtime~main.19e6011f.js"
   },
   {
-    "revision": "c77ced7f8af558fb685a",
-    "url": "/redux-picSaver/static/js/main.c77ced7f.chunk.js"
+    "revision": "20e1afd49c7c94aeb25d",
+    "url": "/redux-picSaver/static/js/main.20e1afd4.chunk.js"
   },
   {
     "revision": "ed574fef66e493db3ec5",
     "url": "/redux-picSaver/static/js/1.ed574fef.chunk.js"
   },
   {
-    "revision": "c77ced7f8af558fb685a",
+    "revision": "20e1afd49c7c94aeb25d",
     "url": "/redux-picSaver/static/css/main.1b0fb6c9.chunk.css"
   },
   {
-    "revision": "379090bb4ab1e69e8f205a7976cee11a",
+    "revision": "fb6f16a973d9d564aa060106333bc859",
     "url": "/redux-picSaver/index.html"
   }
 ];

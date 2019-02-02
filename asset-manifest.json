@@ -1,15 +1,15 @@
 {
   "main.css": "/redux-picSaver/static/css/main.1b0fb6c9.chunk.css",
-  "main.js": "/redux-picSaver/static/js/main.c77ced7f.chunk.js",
-  "main.js.map": "/redux-picSaver/static/js/main.c77ced7f.chunk.js.map",
+  "main.js": "/redux-picSaver/static/js/main.20e1afd4.chunk.js",
+  "main.js.map": "/redux-picSaver/static/js/main.20e1afd4.chunk.js.map",
   "static/js/1.ed574fef.chunk.js": "/redux-picSaver/static/js/1.ed574fef.chunk.js",
   "static/js/1.ed574fef.chunk.js.map": "/redux-picSaver/static/js/1.ed574fef.chunk.js.map",
   "runtime~main.js": "/redux-picSaver/static/js/runtime~main.19e6011f.js",
   "runtime~main.js.map": "/redux-picSaver/static/js/runtime~main.19e6011f.js.map",
-  "static/media/icons.css": "/redux-picSaver/static/media/menu.14c32a6d.svg",
+  "static/media/icons.css": "/redux-picSaver/static/media/heart_red.c4cfb5ca.svg",
   "static/media/index.css": "/redux-picSaver/static/media/Lobster.2d942223.ttf",
   "static/css/main.1b0fb6c9.chunk.css.map": "/redux-picSaver/static/css/main.1b0fb6c9.chunk.css.map",
   "index.html": "/redux-picSaver/index.html",
-  "precache-manifest.e2a4013fd02a54c2e461064c90ff7a8d.js": "/redux-picSaver/precache-manifest.e2a4013fd02a54c2e461064c90ff7a8d.js",
+  "precache-manifest.1232b9d93634acd6c36f48d17e5a2afa.js": "/redux-picSaver/precache-manifest.1232b9d93634acd6c36f48d17e5a2afa.js",
   "service-worker.js": "/redux-picSaver/service-worker.js"
 }
