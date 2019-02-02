@@ -7,7 +7,7 @@ import "../../static/icons.css";
 
 const closeStyle = {
   position: "absolute",
-  right: 0,
+  left: 0,
   margin: "20px",
   cursor: "pointer"
 };
