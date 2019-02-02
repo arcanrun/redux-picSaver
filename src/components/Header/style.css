@@ -1,11 +1,12 @@
 .header {
   text-align: center;
   border-bottom: 1px solid #cccbcb;
+  height: 50px;
 }
 .header__title {
   font-family: Lobster;
   margin: 0;
   font-size: 30px;
-  margin-bottom: 5px;
+  margin: 10px;
   color: #42648b;
 }
